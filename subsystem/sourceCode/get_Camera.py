@@ -7,21 +7,19 @@
 import cv2 as cv2
 from pyzbar import pyzbar
 
+def get_Camera():
+    # Get video stream from Webcam
+    cam = cv2.VideoCapture(0)
 
-######################################
-### Section 1: Preprocessing
-######################################
-# Get video stream from Webcam
-cam = cv2.VideoCapture(0)
-
-# While loop to detect and iterate through barcodes
-while(True):
     # Read from camera
     retval, img = cam.read()
 
     # Rescale if too large
     res_scale = 0.5
     img = cv2.resize(img, (0, 0), fx=res_scale, fy=res_scale)
+
+    # Scope Variables
+    barcodeData = "NULL"
 
     ################################################
     ### Section 2: QR Code Recognition
@@ -47,7 +45,7 @@ while(True):
                         cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
     ################################################
-    ### Section 3: Objection Detection
+    ### Section 3: Obstruction Detection
     ################################################
     # Calculate mean and standard deviation of image
     mean, std = cv2.meanStdDev(img)
@@ -60,11 +58,20 @@ while(True):
 
     obstruction_text = "Obstruction Value ({})".format(obstruction)
 
-    # Put text
+    # Put Text
     cv2.putText(img, str(mean), (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     cv2.putText(img, str(std), (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     cv2.putText(img, obstruction_text, (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
-    # Show Image Feed
-    cv2.imshow("Subsystem", img)
-    key = cv2.waitKey(1) & 0xFF
+    # Print for Debug
+    print("get_Camera Block")
+    print("-------------------")
+    print("Obstruction Detected: " + str(obstruction))
+    print("QR Code Info: " + str(barcodeData))
+    print("")
+
+    # Imshow for GUI Debug
+    cv2.imshow("VALET", img)
+    key = cv2.waitKey(3000)
+
+    return obstruction, barcodeData
