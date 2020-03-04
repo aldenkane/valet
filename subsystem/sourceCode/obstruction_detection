@@ -1,0 +1,35 @@
+# obstruction_detection.py
+# A script to detect obstructions using STD of all pixels on screen
+# EE Senior Design: Team Valet
+#   Author: Alden Kane
+
+import cv2
+
+######################################
+# Section 1: Preprocessing
+######################################
+# Get video stream from Webcam
+cam = cv2.VideoCapture(0)
+
+######################################
+# Section 2: QR Code Reading, turn into function
+######################################
+
+# While loop to detect and iterate through barcodes
+while(True):
+    # Read from camera
+    retval, img = cam.read()
+
+    # Rescale if too large
+    res_scale = 0.5
+    img = cv2.resize(img, (0, 0), fx=res_scale, fy=res_scale)
+
+    mean, std = cv2.meanStdDev(img)
+
+    cv2.putText(img, str(mean), (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+    cv2.putText(img, str(std), (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+
+    # Show
+    cv2.imshow("Mean (std)", img)
+    key = cv2.waitKey(1) & 0xFF
+
