@@ -14,7 +14,7 @@ BIASED_DISTANCE = 0X04
 
 
 # Declare Bus w/ SMbus, Intialize I2C
-bus = smbus.SMBus(CHANNEL, STATUS)
+bus = smbus.SMBus(CHANNEL)
 
 # Initialize LiDAR by Writing to Correction Distance Mode to ACQ Register
 bus.write_byte_data(DEVICE_ADDRESS, ACQ_COMMANDS, BIASED_DISTANCE)
