@@ -22,4 +22,5 @@ bus.write_byte_data(DEVICE_ADDRESS, ACQ_COMMANDS, BIASED_DISTANCE)
 r_1 = bus.read_byte_data(DEVICE_ADDRESS, STATUS)
 r_1_Bin = bin(r_1)
 
-print("Read Status Distance: " + str(r_1) + 'cm')
+print("Read Status Binary: " + str(r_1_Bin))
+print("Read Status Distance: " + str(r_1) + ' cm')
