@@ -9,6 +9,6 @@ DEVICE_REG_LEDOUT0 = 0x1d
 
 #Read device data
 
-read = bus.read_block_data(DEVICE_ADDRESS, distance_Low_Byte, 0x01)
+read = bus.read_byte_data(DEVICE_ADDRESS, distance_Low_Byte)
 
 print(read)
