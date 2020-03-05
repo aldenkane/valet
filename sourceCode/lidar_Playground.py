@@ -20,12 +20,17 @@ bus = smbus.SMBus(CHANNEL)
 # Initialize LiDAR by Writing to Correction Distance Mode to ACQ Register
 bus.write_byte_data(DEVICE_ADDRESS, ACQ_COMMANDS, BIASED_DISTANCE)
 
-r_1 = bus.read_byte_data(DEVICE_ADDRESS, STATUS)
-if r_1 == 1:
-    read_Distance_0 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
-    read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
-    print("Read Distance " + str(read_Distance_0) + ' cm')
-    exit()
+# Read Distance Data
+while True:
+    r_1 = bus.read_byte_data(DEVICE_ADDRESS, STATUS)
+    r_1_Bin = bin(r_1)
+    print("Read Status Binary: " + str(r_1_Bin))
+    print("Read Status: " + str(r_1) + ' cm')
+    if r_1 == 1:
+        read_Distance_0 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
+        read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
+        print("Read Distance " + str(read_Distance_0) + ' cm')
+        exit()
 
 
 
