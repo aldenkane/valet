@@ -21,7 +21,7 @@ bus = smbus.SMBus(CHANNEL)
 bus.write_byte_data(DEVICE_ADDRESS, ACQ_COMMANDS, BIASED_DISTANCE)
 
 # Read Distance Data
-while true:
+while True:
     r_1 = bus.read_byte_data(DEVICE_ADDRESS, STATUS)
     r_1_Bin = bin(r_1)
     print("Read Status Binary: " + str(r_1_Bin))
