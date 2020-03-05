@@ -34,5 +34,3 @@ def get_LiDAR():
         exit()
 
     return read_Distance_0
-
-get_LiDAR()
