@@ -27,8 +27,8 @@ target_URL = 'http://seniordesign.ee.nd.edu/2020/Design%20Teams/valet/users.json
 #########################################
 
 firstName, lastName, userKey, lat, long = get_User_Info(target_URL)
-distance = get_LiDAR()
 obstruction, barcodeData = get_Camera()
+distance = get_LiDAR()
 
 
 #########################################
