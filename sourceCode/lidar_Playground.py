@@ -11,8 +11,8 @@ RESET_BYTE = 0x00
 bus = smbus.SMBus(CHANNEL)
 
 #Reset Measurements
-bus.write_byte_data(DEVICE_ADDRESS, RESET_BYTE)
-bus.write_byte_data(DEVICE_ADDRESS, RESET_BYTE)
+bus.write_byte_data(DEVICE_ADDRESS, DISTANCE_LOW_BYTE, RESET_BYTE)
+bus.write_byte_data(DEVICE_ADDRESS, DISTANCE_HIGH_BYTE, RESET_BYTE)
 
 #Read device data
 low_Distance = bus.read_byte_data(DEVICE_ADDRESS, DISTANCE_LOW_BYTE)
