@@ -1,19 +1,14 @@
-import time
-import board
-import busio
-import adafruit_lidarlite
+import smbus
 
-# Create library object using our Bus I2C port
-i2c = busio.I2C(board.SCL, board.SDA)
+bus = smbus.SMBus(1)    # 0 = /dev/i2c-0 (port I2C0), 1 = /dev/i2c-1 (port I2C1)
 
-# Default configuration, with only i2c wires
-sensor = adafruit_lidarlite.LIDARLite(i2c)
+DEVICE_ADDRESS = 0x62      #7 bit address (will be left shifted to add the read write bit)
+DEVICE_REG_MODE1 = 0x00
+distance_Low_Byte = 0x10
+DEVICE_REG_LEDOUT0 = 0x1d
 
-while True:
-    try:
-        # We print tuples so you can plot with Mu Plotter
-        print((sensor.distance,))
-    except RuntimeError as e:
-        # If we get a reading error, just print it and keep truckin'
-        print(e)
-    time.sleep(0.01) # you can remove this for ultra-fast measurements!
+#Read device data
+
+read = bus.read_block_data(DEVICE_ADDRESS, distance_Low_Byte, 0x01)
+
+print(read)
