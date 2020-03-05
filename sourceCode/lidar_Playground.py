@@ -12,7 +12,7 @@ FULL_DELAY_HIGH = 0X11
 RESET_BYTE = 0x00
 BIASED_DISTANCE = 0X04
 
-read_Distance = 0
+read_Distance_Extended = 0
 
 # Declare Bus w/ SMbus, Intialize I2C
 bus = smbus.SMBus(CHANNEL)
@@ -20,12 +20,13 @@ bus = smbus.SMBus(CHANNEL)
 # Initialize LiDAR by Writing to Correction Distance Mode to ACQ Register
 bus.write_byte_data(DEVICE_ADDRESS, ACQ_COMMANDS, BIASED_DISTANCE)
 
+# Read from Control Register to see if we can access LiDAR Distance Measurement
 r_1 = bus.read_byte_data(DEVICE_ADDRESS, STATUS)
+
 if r_1 == 1:
-    read_Distance = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
-    print("Read Distance " + str(read_Distance) + ' cm')
-else:
-    exit()
+    read_Distance_Extended = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
+    print(read_Distance_Extended)
+
 
 
 
