@@ -6,6 +6,10 @@
     # Obstruction Detection
     # Accessing Lidar
     # Putting Data over SPI
+# Future Improvements, as of 03/05/2020 at 2:26 AM
+    # Tune up LiDAR for More Consistent Functionality
+    # Putting Data over SPI
+    # More advanced camera functions
 # Author: Alden Kane
 
 #########################################
@@ -30,16 +34,16 @@ firstName, lastName, userKey, lat, long = get_User_Info(target_URL)
 obstruction, barcodeData = get_Camera()
 distance = get_LiDAR()
 
-
 #########################################
 # Section 4: Print for Debug
 #########################################
 # Print for Debug
 print("system.py Block")
 print("-------------------")
-print("User Key: " + str(userKey))
-print("Latitude: " + lat)
-print("Longitude: " + long)
+print("Web Fetched User Key: " + str(userKey))
+print("Target Delivery Latitude: " + lat)
+print("Target Delivery Longitude: " + long)
 print("QR Encoded userKey " + barcodeData)
+print("Vision Based Obstruction Found" + str(obstruction))
 print("LiDAR Detection Distance: " + str(distance))
 print("")

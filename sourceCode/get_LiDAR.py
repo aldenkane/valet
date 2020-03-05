@@ -28,7 +28,6 @@ def get_LiDAR():
     if r_1 == 1:
         read_Distance_0 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
         read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
-        print("Read Distance " + str(read_Distance_1) + ' cm')
     else:
         print("Couldn't Access Distance")
         exit()

@@ -26,13 +26,5 @@ def get_User_Info(target):
     lat = data["latitude"]
     long = data["longitude"]
 
-    # Print for Debug
-    print("get_User_Info Block")
-    print("-------------------")
-    print("User Key: " + str(userKey))
-    print("Latitude: " + lat)
-    print("Longitude: " + long)
-    print("")
-
     return firstName, lastName, userKey, lat, long
 

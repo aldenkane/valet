@@ -63,13 +63,6 @@ def get_Camera():
     cv2.putText(img, str(std), (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     cv2.putText(img, obstruction_text, (20, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
 
-    # Print for Debug
-    print("get_Camera Block")
-    print("-------------------")
-    print("Obstruction Detected: " + str(obstruction))
-    print("QR Code Info: " + str(barcodeData))
-    print("")
-
     # Imshow for GUI Debug
     cv2.imshow("VALET", img)
     key = cv2.waitKey(3000)
