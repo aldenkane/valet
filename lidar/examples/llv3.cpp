@@ -19,7 +19,7 @@
 #include <linux/types.h>
 #include <cstdio>
 
-#include <include/lidarlite_v3.h>
+#include <../include/lidarlite_v3.h>
 
 LIDARLite_v3 myLidarLite;
 
