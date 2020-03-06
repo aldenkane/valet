@@ -24,7 +24,7 @@ from get_Camera import get_Camera_Headless
 from get_LiDAR import get_LiDAR
 
 target_URL = 'http://seniordesign.ee.nd.edu/2020/Design%20Teams/valet/users.json'
-global distance_LiDAR_1
+distance_LiDAR_1 = 0
 
 #########################################
 # Section 2: Call One-Time Functions
