@@ -20,7 +20,7 @@ def get_LiDAR():
     BIASED_DISTANCE = 0X04
 
     # Initialize Global
-    global distance_LiDAR_1
+    # global distance_LiDAR_1
 
     # Declare Bus w/ SMbus, Intialize I2C
     bus = smbus.SMBus(CHANNEL)
@@ -33,12 +33,10 @@ def get_LiDAR():
 
     # Check to see if distance can be read from device
     if r_1 == 1:
-        try:
-            distance_LiDAR_1 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
-            #distance_LiDAR_2 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
-        except:
-            distance_LiDAR_1 = 'Null - No Signal Acquired'
+        # Had a try statement here
+        distance_LiDAR_1 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
+        #distance_LiDAR_2 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
     else:
-        pass
+        distance_LiDAR_1 = 'Null - No Signal Acquired'
 
     return distance_LiDAR_1
