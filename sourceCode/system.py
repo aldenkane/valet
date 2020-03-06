@@ -10,15 +10,19 @@
     # Tune up LiDAR for More Consistent Functionality
     # Putting Data over SPI
     # More advanced camera functions
+    # User matching functions
+    # Moving average for LiDAR
+    # Timeout functions!!!
 # Author: Alden Kane
 
 #########################################
 # Section 1: Import Libraries and Functions
 #########################################
 
-from get_User_Info import get_User_Info
-from get_Camera import get_Camera
-from get_LiDAR import get_LiDAR
+import get_User_Info
+import get_Camera
+from get_Camera import get_Camera_Headless
+import get_LiDAR
 
 #########################################
 # Section 2: Declare Function Inputs
@@ -31,7 +35,7 @@ target_URL = 'http://seniordesign.ee.nd.edu/2020/Design%20Teams/valet/users.json
 #########################################
 
 firstName, lastName, userKey, lat, long = get_User_Info(target_URL)
-obstruction, barcodeData = get_Camera()
+obstruction, barcodeData = get_Camera_Headless()
 distance = get_LiDAR()
 
 #########################################

@@ -68,3 +68,46 @@ def get_Camera():
     key = cv2.waitKey(3000)
 
     return obstruction, barcodeData
+
+def get_Camera_Headless():
+    # Get video stream from Webcam
+    cam = cv2.VideoCapture(0)
+
+    # Read from camera
+    retval, img = cam.read()
+
+    # Rescale if too large
+    res_scale = 0.5
+    img = cv2.resize(img, (0, 0), fx=res_scale, fy=res_scale)
+
+    # Scope Variables
+    barcodeData = "NULL"
+
+    ################################################
+    ### Section 2: QR Code Recognition
+    ################################################
+    # Find + decode barcodes
+    barcodes = pyzbar.decode(img)
+
+    # Iterate over barcodes
+    for barcode in barcodes:
+        # Get bounding box
+        (x, y, w, h) = barcode.rect
+
+        # Get information on barcodes
+        barcodeData = barcode.data.decode("utf-8")
+        barcodeType = barcode.type
+
+    ################################################
+    ### Section 3: Obstruction Detection
+    ################################################
+    # Calculate mean and standard deviation of image
+    mean, std = cv2.meanStdDev(img)
+
+    # Obstruction Calculation
+    if std[0] < 30 or std[1] < 30 or std[2] < 30:
+        obstruction = 1
+    else:
+        obstruction = 0
+
+    return obstruction, barcodeData
