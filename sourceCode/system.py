@@ -49,5 +49,5 @@ while True:
     print("Target Delivery Longitude: " + long)
     print("QR Encoded userKey: " + barcodeData)
     print("Vision Based Obstruction Found: " + str(obstruction))
-    print("LiDAR Detection Distance: " + str(distance) + " cm")
+    print("LiDAR Detection Distance: " + str(distance_LiDAR_1) + " cm")
     print("")
