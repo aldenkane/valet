@@ -17,8 +17,6 @@ def get_LiDAR():
     RESET_BYTE = 0x00
     BIASED_DISTANCE = 0X04
 
-    read_Distance = 0
-
     # Declare Bus w/ SMbus, Intialize I2C
     bus = smbus.SMBus(CHANNEL)
 
@@ -33,6 +31,6 @@ def get_LiDAR():
         read_Distance_0 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
         read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
     else:
-        print("Couldn't Access Distance")
+        read_Distance_0 = 'NULL - No Signal Acquired'
 
     return read_Distance_0
