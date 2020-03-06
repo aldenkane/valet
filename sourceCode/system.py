@@ -19,10 +19,9 @@
 # Section 1: Import Libraries and Functions
 #########################################
 
-import get_User_Info
-import get_Camera
+from get_User_Info import get_User_Info
 from get_Camera import get_Camera_Headless
-import get_LiDAR
+from get_LiDAR import get_LiDAR
 
 #########################################
 # Section 2: Declare Function Inputs
