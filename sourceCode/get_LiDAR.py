@@ -5,6 +5,9 @@
 import smbus
 
 def get_LiDAR():
+    # Hacky Piece of Code to Sub for Return w/ Print
+    distance = 0
+
     # Declare Globals and Device Parameters
     CHANNEL = 1
     DEVICE_ADDRESS = 0x62
@@ -39,4 +42,6 @@ def get_LiDAR():
     else:
         pass
 
-    return distance_LiDAR_1
+    print('Lidar Distance: ' + str(distance_LiDAR_1) + ' cm')
+
+    return distance
