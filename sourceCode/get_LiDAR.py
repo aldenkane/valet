@@ -5,9 +5,6 @@
 import smbus
 
 def get_LiDAR():
-    # Hacky Piece of Code to Sub for Return w/ Print
-    distance = 0
-
     # Declare Globals and Device Parameters
     CHANNEL = 1
     DEVICE_ADDRESS = 0x62
@@ -21,7 +18,7 @@ def get_LiDAR():
     BIASED_DISTANCE = 0X04
 
     # Initialize Global
-    # global distance_LiDAR_1
+    global distance_LiDAR_1
 
     # Declare Bus w/ SMbus, Intialize I2C
     bus = smbus.SMBus(CHANNEL)
@@ -42,6 +39,4 @@ def get_LiDAR():
     else:
         pass
 
-    print('Lidar Distance: ' + str(distance_LiDAR_1) + ' cm')
-
-    return distance
+    return distance_LiDAR_1

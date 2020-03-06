@@ -36,7 +36,7 @@ while True:
     # Section 3: Call Repeat Read Functions
     #########################################
     obstruction, barcodeData = get_Camera_Headless()
-    distance = get_LiDAR()
+    distance_LiDAR_1 = get_LiDAR()
 
     #########################################
     # Section 4: Print for Debug
