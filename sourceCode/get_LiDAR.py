@@ -17,6 +17,9 @@ def get_LiDAR():
     RESET_BYTE = 0x00
     BIASED_DISTANCE = 0X04
 
+    # Initialize Global
+    global read_Distance_0
+
     # Declare Bus w/ SMbus, Intialize I2C
     bus = smbus.SMBus(CHANNEL)
 
@@ -36,4 +39,6 @@ def get_LiDAR():
     else:
         pass
 
-    return read_Distance_0
+    distance = read_Distance_0
+
+    return distance
