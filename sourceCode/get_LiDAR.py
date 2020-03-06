@@ -1,3 +1,7 @@
+# Improvements
+    # Return a flag that says whether or not a distance was picked up
+    # Get this to not be so buggy
+
 import smbus
 
 def get_LiDAR():
@@ -30,6 +34,5 @@ def get_LiDAR():
         read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
     else:
         print("Couldn't Access Distance")
-        exit()
 
     return read_Distance_0

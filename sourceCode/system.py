@@ -16,37 +16,37 @@
 # Author: Alden Kane
 
 #########################################
-# Section 1: Import Libraries and Functions
+# Section 1: Import Libraries and Functions, Declare Globals
 #########################################
 
 from get_User_Info import get_User_Info
 from get_Camera import get_Camera_Headless
 from get_LiDAR import get_LiDAR
 
-#########################################
-# Section 2: Declare Function Inputs
-#########################################
-
 target_URL = 'http://seniordesign.ee.nd.edu/2020/Design%20Teams/valet/users.json'
 
 #########################################
-# Section 3: Call Functions
+# Section 2: Call One-Time Functions
 #########################################
-
 firstName, lastName, userKey, lat, long = get_User_Info(target_URL)
-obstruction, barcodeData = get_Camera_Headless()
-distance = get_LiDAR()
 
-#########################################
-# Section 4: Print for Debug
-#########################################
-# Print for Debug
-print("system.py Block")
-print("-------------------")
-print("Web Fetched User Key: " + str(userKey))
-print("Target Delivery Latitude: " + lat)
-print("Target Delivery Longitude: " + long)
-print("QR Encoded userKey: " + barcodeData)
-print("Vision Based Obstruction Found: " + str(obstruction))
-print("LiDAR Detection Distance: " + str(distance) + " cm")
-print("")
+while True:
+    #########################################
+    # Section 3: Call Repeat Read Functions
+    #########################################
+    obstruction, barcodeData = get_Camera_Headless()
+    distance = get_LiDAR()
+
+    #########################################
+    # Section 4: Print for Debug
+    #########################################
+    # Print for Debug
+    print("system.py Block")
+    print("-------------------")
+    print("Web Fetched User Key: " + str(userKey))
+    print("Target Delivery Latitude: " + lat)
+    print("Target Delivery Longitude: " + long)
+    print("QR Encoded userKey: " + barcodeData)
+    print("Vision Based Obstruction Found: " + str(obstruction))
+    print("LiDAR Detection Distance: " + str(distance) + " cm")
+    print("")
