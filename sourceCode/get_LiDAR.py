@@ -28,8 +28,9 @@ def get_LiDAR():
 
     # Check to see if distance can be read from device
     if r_1 == 1:
-        read_Distance_0 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
-        read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
+        try:
+            read_Distance_0 = bus.read_byte_data(DEVICE_ADDRESS, FULL_DELAY_LOW)
+            read_Distance_1 = bus.read_i2c_block_data(DEVICE_ADDRESS, FULL_DELAY_LOW, 2)
     else:
         read_Distance_0 = 'NULL - No Signal Acquired'
 
