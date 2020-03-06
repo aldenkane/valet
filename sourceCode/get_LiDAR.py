@@ -4,7 +4,8 @@
 
 import smbus
 
-distance_LiDAR_1 = 0
+# Declare a Global
+distance_LiDAR_1
 
 def get_LiDAR():
     # Declare Globals and Device Parameters
